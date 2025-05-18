@@ -28,7 +28,7 @@ namespace yazilim_proje2
             if( textBox1.Text == "" || textBox2.Text == "")
             {
                 MessageBox.Show("Eksik bilgi.");
-            }else if(textBox1.Text=="admin"&&textBox2.Text=="1234")
+            }else if(textBox1.Text== "admin" && textBox2.Text == "1234")
             {
                 anaSayfa syf = new anaSayfa();
                 syf.Show();

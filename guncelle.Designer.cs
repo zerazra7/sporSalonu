@@ -82,9 +82,9 @@
             this.button2.BackColor = System.Drawing.Color.Black;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.Location = new System.Drawing.Point(829, 706);
+            this.button2.Location = new System.Drawing.Point(818, 706);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 53);
+            this.button2.Size = new System.Drawing.Size(122, 53);
             this.button2.TabIndex = 36;
             this.button2.Text = "Temizle";
             this.button2.UseVisualStyleBackColor = false;
@@ -113,7 +113,6 @@
             this.label8.Size = new System.Drawing.Size(148, 32);
             this.label8.TabIndex = 34;
             this.label8.Text = "Aylık Tutar";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtYas
             // 
@@ -123,7 +122,6 @@
             this.txtYas.Name = "txtYas";
             this.txtYas.Size = new System.Drawing.Size(110, 40);
             this.txtYas.TabIndex = 33;
-            this.txtYas.TextChanged += new System.EventHandler(this.txtYas_TextChanged);
             // 
             // comboBoxCinsiyet
             // 
@@ -136,7 +134,6 @@
             this.comboBoxCinsiyet.Name = "comboBoxCinsiyet";
             this.comboBoxCinsiyet.Size = new System.Drawing.Size(148, 40);
             this.comboBoxCinsiyet.TabIndex = 32;
-            this.comboBoxCinsiyet.SelectedIndexChanged += new System.EventHandler(this.comboBoxCinsiyet_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -148,7 +145,6 @@
             this.label7.Size = new System.Drawing.Size(116, 32);
             this.label7.TabIndex = 31;
             this.label7.Text = "Cinsiyet";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -160,7 +156,6 @@
             this.label6.Size = new System.Drawing.Size(63, 32);
             this.label6.TabIndex = 30;
             this.label6.Text = "Yaş";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -172,7 +167,6 @@
             this.label5.Size = new System.Drawing.Size(110, 32);
             this.label5.TabIndex = 28;
             this.label5.Text = "Telefon";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtOdeme
             // 
@@ -182,7 +176,6 @@
             this.txtOdeme.Name = "txtOdeme";
             this.txtOdeme.Size = new System.Drawing.Size(142, 43);
             this.txtOdeme.TabIndex = 27;
-            this.txtOdeme.TextChanged += new System.EventHandler(this.txtOdeme_TextChanged);
             // 
             // label4
             // 
@@ -194,7 +187,6 @@
             this.label4.Size = new System.Drawing.Size(166, 32);
             this.label4.TabIndex = 26;
             this.label4.Text = " Adı /Soyadı";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtIsim
             // 
@@ -204,7 +196,6 @@
             this.txtIsim.Name = "txtIsim";
             this.txtIsim.Size = new System.Drawing.Size(291, 36);
             this.txtIsim.TabIndex = 25;
-            this.txtIsim.TextChanged += new System.EventHandler(this.txtIsim_TextChanged);
             // 
             // label2
             // 
@@ -263,7 +254,6 @@
             this.comboBoxTip.Name = "comboBoxTip";
             this.comboBoxTip.Size = new System.Drawing.Size(165, 40);
             this.comboBoxTip.TabIndex = 42;
-            this.comboBoxTip.SelectedIndexChanged += new System.EventHandler(this.comboBoxTip_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -275,7 +265,6 @@
             this.label9.Size = new System.Drawing.Size(118, 32);
             this.label9.TabIndex = 41;
             this.label9.Text = "Üye Tipi";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // txtTel
             // 
@@ -284,7 +273,6 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(232, 29);
             this.txtTel.TabIndex = 46;
-            this.txtTel.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtTel_MaskInputRejected);
             // 
             // guncelle
             // 

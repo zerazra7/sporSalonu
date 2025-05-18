@@ -40,7 +40,7 @@ namespace yazilim_proje2
         {
             try
             {
-                // 1) Modeli oluştur, bütün validasyon burada
+               
                 var uye = new Uye
                 {
                     Isim = adsydtxt.Text,
@@ -129,24 +129,5 @@ namespace yazilim_proje2
             textBoxAylikTutar.Text = (aylik * aySayisi).ToString("0.##");
         }
 
-        private void yastxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void teltxt_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace yazilim_proje2
 {
@@ -23,7 +24,7 @@ namespace yazilim_proje2
         {
             LoadUyeler();
 
-            // Cinsiyet combobox’ı
+            // Cinsiyet combobox’ı 
             comboBoxCinsiyet.Items.Clear();
             comboBoxCinsiyet.Items.AddRange(new[] { "Erkek", "Kadın" });
             comboBoxCinsiyet.SelectedIndex = 0;
@@ -82,17 +83,18 @@ namespace yazilim_proje2
                 hatalar.Add("Geçerli bir isim giriniz (sadece harf).");
 
             // Telefon kontrolü
-            if (string.IsNullOrWhiteSpace(txtTel.Text))
-                hatalar.Add("Telefon numarası boş bırakılamaz.");
-            else
-            {
-                if (!Regex.IsMatch(txtTel.Text, @"^\d+$"))
-                    hatalar.Add("Telefon numarası sadece rakamlardan oluşmalıdır.");
-                if (txtTel.Text.Length != 10)
-                    hatalar.Add("Telefon numarası tam olarak 10 haneli olmalıdır.");
-                if (txtTel.Text.StartsWith("0"))
-                    hatalar.Add("Telefon numarasını başında '0' olmadan giriniz.");
-            }
+            // Telefon kontrolü
+            var rawTel = txtTel.Text;
+            // 1) Sadece rakamları al
+            var digits = new string(rawTel.Where(char.IsDigit).ToArray());
+
+            // 2) Eğer 0 ile başlamışsa ve 11 haneliyse baştaki sıfırı at
+            if (digits.Length == 11 && digits.StartsWith("0"))
+                digits = digits.Substring(1);
+
+            // 3) Şimdi mutlaka 10 hane olmalı
+            if (digits.Length != 10)
+                hatalar.Add("Telefon numarası tam olarak 10 haneli olmalıdır.");
 
             // Yaş kontrolü
             if (string.IsNullOrWhiteSpace(txtYas.Text) || !int.TryParse(txtYas.Text, out yas) || yas < 18 || yas > 110)
@@ -123,7 +125,7 @@ namespace yazilim_proje2
                 Uye uye = new Uye
                 {
                     Isim = txtIsim.Text,
-                    Telefon = txtTel.Text,
+                    Telefon = digits,
                     Yas = yas,
                     Odeme = odeme,
                     Cinsiyet = comboBoxCinsiyet.SelectedItem.ToString(),
@@ -138,7 +140,7 @@ namespace yazilim_proje2
                 SqlCommand cmd = new SqlCommand(query, baglanti);
                 cmd.Parameters.AddWithValue("@id", uyeId);
                 cmd.Parameters.AddWithValue("@isim", uye.Isim);
-                cmd.Parameters.AddWithValue("@tel", uye.Telefon);
+                cmd.Parameters.AddWithValue("@tel", digits);
                 cmd.Parameters.AddWithValue("@cinsiyet", uye.Cinsiyet);
                 cmd.Parameters.AddWithValue("@yas", uye.Yas);
                 cmd.Parameters.AddWithValue("@odeme", uye.Odeme);
@@ -146,6 +148,8 @@ namespace yazilim_proje2
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Üye bilgileri başarıyla güncellendi.\n" + uye.BilgiVer());
+
+                LoadUyeler();    // DataGridView’i güncel verilerle yeniden doldurur
             }
             catch (Exception ex)
             {
@@ -208,68 +212,8 @@ namespace yazilim_proje2
             txtTel.Clear();
             txtYas.Clear();
             txtOdeme.Clear();
-            comboBoxCinsiyet.SelectedIndex = 0;
-            comboBoxTip.SelectedIndex = 0;
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxTip_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtYas_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxCinsiyet_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtOdeme_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtTel_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void txtIsim_TextChanged(object sender, EventArgs e)
-        {
-
+            comboBoxCinsiyet.SelectedIndex = -1; // temizlenince seçiliymiş gibi görünmesin diye 0 değil -1
+            comboBoxTip.SelectedIndex = -1;
         }
     }
 }

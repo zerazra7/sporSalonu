@@ -73,7 +73,7 @@
             this.label2.Size = new System.Drawing.Size(295, 32);
             this.label2.TabIndex = 4;
             this.label2.Text = "YENİ ÜYELİK FORMU";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+//            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -116,7 +116,7 @@
             this.label5.Size = new System.Drawing.Size(110, 32);
             this.label5.TabIndex = 9;
             this.label5.Text = "Telefon";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+//            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -137,7 +137,7 @@
             this.yastxt.Name = "yastxt";
             this.yastxt.Size = new System.Drawing.Size(101, 37);
             this.yastxt.TabIndex = 10;
-            this.yastxt.TextChanged += new System.EventHandler(this.yastxt_TextChanged);
+//            this.yastxt.TextChanged += new System.EventHandler(this.yastxt_TextChanged);
             // 
             // label7
             // 
@@ -285,7 +285,7 @@
             this.teltxt.Name = "teltxt";
             this.teltxt.Size = new System.Drawing.Size(179, 29);
             this.teltxt.TabIndex = 26;
-            this.teltxt.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.teltxt_MaskInputRejected);
+//            this.teltxt.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.teltxt_MaskInputRejected);
             // 
             // pictureBox1
             // 
