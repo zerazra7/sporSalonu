@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDF116A6-A4BA-4B4F-AB71-3CFBE3E17695}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>yazilim_proje2</RootNamespace>
+    <AssemblyName>yazilim_proje2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="anaSayfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="anaSayfa.Designer.cs">
+      <DependentUpon>anaSayfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="guncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="guncelle.Designer.cs">
+      <DependentUpon>guncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="kisi.cs" />
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="odeme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="odeme.Designer.cs">
+      <DependentUpon>odeme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="uye.cs" />
+    <Compile Include="uyeEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uyeEkle.Designer.cs">
+      <DependentUpon>uyeEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uyeGoruntule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="uyeGoruntule.Designer.cs">
+      <DependentUpon>uyeGoruntule.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="anaSayfa.resx">
+      <DependentUpon>anaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="guncelle.resx">
+      <DependentUpon>guncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="odeme.resx">
+      <DependentUpon>odeme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="uyeEkle.resx">
+      <DependentUpon>uyeEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="uyeGoruntule.resx">
+      <DependentUpon>uyeGoruntule.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\76004069-spor-salonu-ve-fitness-logosu-şablon-retro-tarzı-vektör-amblemi-bambu-ve-güçlü-el.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User-Profile-PNG-Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\png-clipart-computer-icons-lock-privacy-others-logo-business.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1249959543.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anasayfa1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anasayfa1.1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pp1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pp2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pp4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="models\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
