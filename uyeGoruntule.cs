@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace yazilim_proje2
 {
     public partial class uyeGoruntule : BaseForm
     {
         private readonly SqlConnection baglanti = new SqlConnection(
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-              AttachDbFilename=C:\Users\Asus\Documents\sporDB.mdf;
-              Integrated Security=True;Connect Timeout=30");
+    ConfigurationManager.ConnectionStrings["SporSalonu"].ConnectionString);
+
 
         public uyeGoruntule()
         {

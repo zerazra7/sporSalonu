@@ -5,15 +5,15 @@ using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Linq;
+using System.Configuration;
 
 namespace yazilim_proje2
 {
     public partial class guncelle : BaseForm
     {
         private readonly SqlConnection baglanti = new SqlConnection(
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-              AttachDbFilename=C:\Users\Asus\Documents\sporDB.mdf;
-              Integrated Security=True;Connect Timeout=30");
+    ConfigurationManager.ConnectionStrings["SporSalonu"].ConnectionString);
+
 
         public guncelle()
         {

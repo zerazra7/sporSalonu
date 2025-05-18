@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace yazilim_proje2
 {
@@ -13,10 +14,9 @@ namespace yazilim_proje2
             InitializeComponent();
         }
 
+
         private readonly SqlConnection baglanti = new SqlConnection(
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-              AttachDbFilename=C:\Users\Asus\Documents\sporDB.mdf;
-              Integrated Security=True;Connect Timeout=30");
+    ConfigurationManager.ConnectionStrings["SporSalonu"].ConnectionString);
 
         private void uyeEkle_Load(object sender, EventArgs e)
         {

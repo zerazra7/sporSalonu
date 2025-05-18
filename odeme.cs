@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace yazilim_proje2
 {
@@ -17,9 +18,10 @@ namespace yazilim_proje2
         {
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Asus\Documents\sporDB.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=False");
+        private readonly SqlConnection baglanti = new SqlConnection(
+    ConfigurationManager.ConnectionStrings["SporSalonu"].ConnectionString);
 
-        
+
 
         private void fillName()
         {
