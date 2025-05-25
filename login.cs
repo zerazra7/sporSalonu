@@ -36,7 +36,7 @@ namespace yazilim_proje2
             }
             else
             {
-                MessageBox.Show("Hatalı ama hangisi söylemem.");
+                MessageBox.Show("Hatalı giriş tekrar deneyiniz.");
             }
         }
 

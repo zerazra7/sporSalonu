@@ -12,11 +12,14 @@ namespace yazilim_proje2
         public uyeEkle()
         {
             InitializeComponent();
+
+            // KeyPress event'lerini burada tanımlıyoruz
+            adsydtxt.KeyPress += adsydtxt_KeyPress;
+            yastxt.KeyPress += yastxt_KeyPress;
         }
 
-
         private readonly SqlConnection baglanti = new SqlConnection(
-    ConfigurationManager.ConnectionStrings["SporSalonu"].ConnectionString);
+            ConfigurationManager.ConnectionStrings["SporSalonu"].ConnectionString);
 
         private void uyeEkle_Load(object sender, EventArgs e)
         {
@@ -30,22 +33,32 @@ namespace yazilim_proje2
             comboBox2.Items.AddRange(new[] { "Standart", "Premium" });
             comboBox2.SelectedIndex = 0;
 
-            numericUpDown1.ValueChanged += (s, e) => UpdateAylikTutar();
-            comboBox2.SelectedIndexChanged += (s, e) => UpdateAylikTutar();
+            numericUpDown1.ValueChanged += (s, e2) => UpdateAylikTutar();
+            comboBox2.SelectedIndexChanged += (s, e2) => UpdateAylikTutar();
             // İlk gösterim için
             UpdateAylikTutar();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Boş alan kontrolü
+            if (string.IsNullOrWhiteSpace(adsydtxt.Text) ||
+                string.IsNullOrWhiteSpace(teltxt.Text) ||
+                string.IsNullOrWhiteSpace(yastxt.Text) ||
+                comboBox1.SelectedItem == null ||
+                comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Eksik bilgileri doldurunuz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             try
             {
-               
                 var uye = new Uye
                 {
                     Isim = adsydtxt.Text,
                     Cinsiyet = comboBox1.SelectedItem.ToString(),
-                    Telefon = teltxt.Text,                   // burada validasyon patlarsa catch'e düşer
+                    Telefon = teltxt.Text,
                     Yas = int.Parse(yastxt.Text),
                     Odeme = int.Parse(textBoxAylikTutar.Text),
                     Tip = comboBox2.SelectedItem.ToString()
@@ -54,10 +67,10 @@ namespace yazilim_proje2
                 // 2) DB kaydı
                 baglanti.Open();
                 var sql = @"
-            INSERT INTO uyeTbl
-              (UYEisim, UYEtel, UYEcinsiyet, UYEyas, UYEodeme, UYEtip)
-            VALUES
-              (@isim,@tel,@cins,@yas,@odem,@tip)";
+                    INSERT INTO uyeTbl
+                      (UYEisim, UYEtel, UYEcinsiyet, UYEyas, UYEodeme, UYEtip)
+                    VALUES
+                      (@isim,@tel,@cins,@yas,@odem,@tip)";
                 using (var cmd = new SqlCommand(sql, baglanti))
                 {
                     cmd.Parameters.AddWithValue("@isim", uye.Isim);
@@ -74,7 +87,6 @@ namespace yazilim_proje2
             }
             catch (ArgumentException ex)
             {
-                // Hangi validasyon hatası varsa oradaki mesaj gösterilir
                 MessageBox.Show(ex.Message, "Geçersiz Girdi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
@@ -87,7 +99,6 @@ namespace yazilim_proje2
                 ClearInputs();
             }
         }
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -118,16 +129,31 @@ namespace yazilim_proje2
 
         private void UpdateAylikTutar()
         {
-            // üüye tipi bazlı aylık ücret
             decimal aylik = comboBox2.SelectedItem.ToString() == "Premium"
                             ? 4000m
                             : 1200m;
-          
+
             int aySayisi = (int)numericUpDown1.Value;
 
-            
             textBoxAylikTutar.Text = (aylik * aySayisi).ToString("0.##");
         }
 
+        // Ad Soyad alanına sadece harf girilsin
+        private void adsydtxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+
+        // Yaş alanına sadece rakam girilsin
+        private void yastxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
